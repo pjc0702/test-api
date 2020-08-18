@@ -3,6 +3,8 @@ const Sequelize = require('sequelize')
 const sequelize = new Sequelize('postgres://postgres:admin@localhost:5432/postgres')
 const app = express()
 
+const test = 'test'
+
 const cors = require('cors')
 app.use(cors())
 
