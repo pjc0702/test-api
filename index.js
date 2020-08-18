@@ -37,4 +37,4 @@ app.post('/createUser', async(req, res) => {
         res.end("error");
     }
 })
-app.listen(port, () => console.log(`ejecutando api en puerto ${port}`))
+app.listen(port, () => console.log(`Ejecutando api en puerto ${port}`))
