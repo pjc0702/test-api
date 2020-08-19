@@ -1,0 +1,5 @@
+@Library('devops-library') _
+
+angularNodeTestPipeline {
+  slackNotificationChannel = 'aba'
+}
