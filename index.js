@@ -5,14 +5,21 @@ const jsonParser = bodyParser.json();
 // create application/x-www-form-urlencoded parser
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 const app = express()
-    //const sequelize = new Sequelize('postgres://postgres:admin@mbmpru01.pronaca.com:30576/postgres')
-const sequelize = new Sequelize('postgres://postgres:admin@localhost:5432/postgres')
+const sequelize = new Sequelize('postgres://postgres:admin@mbmpru01.pronaca.com:30576/postgres')
+    //const sequelize = new Sequelize('postgres://postgres:admin@localhost:5432/postgres')
 const cors = require('cors')
 app.use(cors())
 
 const router = express.Router();
 app.use('/api', router);
 const port = 8080
+
+const userinput = 'test'
+    //
+const pg = require('pg');
+const pgConnection = new pg.Client({ host: 'admin@mbmpru01.pronaca.com:30576', user: 'postgres', password: 'admin', database: 'postgres' });
+pgConnection.connect();
+pgConnection.query('SELECT * FROM users WHERE id = ' + userinput, (err, res) => {}); // Sensitive
 
 app.use(express.json());
 sequelize.authenticate().then(() => {
@@ -58,6 +65,8 @@ router.get('/user/:userId', async(req, res) => {
     }
 })
 router.get('/users', async(req, res) => {
+
+
     const userId = req.params.userId
     try {
         const user = await User.findAll()
