@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: presentacion
+  name: presentacion-pjc
   namespace: {{ .Release.Namespace }}
 spec:
   replicas: 1
@@ -10,7 +10,7 @@ spec:
   template:
     metadata:
       labels:
-        app: presentacion
+        app: presentacion-pjc
     spec:
       securityContext:
         runAsUser: 0
@@ -18,7 +18,7 @@ spec:
       serviceAccountName: presentacion-sa
       containers:
         - name: presentacion-cont
-          image: cdocregdes.pronaca.com/test/node-api-test:1.0.0
+          image: cdocregdes.pronaca.com/test/test-api-pjc:1.0.0
           imagePullPolicy: Always
           ports:
             - containerPort: 80
